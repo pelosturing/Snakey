@@ -8,4 +8,4 @@ include_directories(./EasyX/include)
 link_directories(./EasyX/lib64)
 link_libraries(libeasyx.a)
 
-add_executable(Snakey main.cpp Snake.cpp GameScene.cpp Sprite.cpp)
+add_executable(Snakey main.cpp Snake.cpp GameScene.cpp Sprite.cpp Food.cpp)

@@ -9,6 +9,7 @@ void GameScene::run() {
     BeginBatchDraw();
     cleardevice();
     snake.draw();
+    food.draw();
     EndBatchDraw();
 
     //移动蛇，改动蛇坐标

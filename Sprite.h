@@ -8,25 +8,29 @@
 #include <easyx.h>
 
 class Sprite {
-private:
+protected:
+    COLORREF m_color{RED};
     int m_x;
-    int m_y;            //坐标
-    COLORREF m_color{RED};   //颜色
+    int m_y;
 public:
     Sprite():Sprite(0,0){}
     Sprite(int x, int y):m_x(x),m_y(y){}
 
-    virtual void draw() const{
-        //设置填充颜色
-        setfillcolor(m_color);
-        //绘制矩形
-        fillrectangle(m_x,m_y,m_x+10,m_y+10);
+    inline int locX() const{
+        return m_x;
     }
 
-    void moveBy(int dx, int dy){
-        m_x += dx;
-        m_y += dy;
+    inline int locY() const{
+        return m_y;
     }
+
+    // 绘制
+    virtual void draw() const;
+    // 移动
+    void moveBy(int dx, int dy);
+    //碰撞检测
+    bool isCollision(const Sprite& other) const;
+
 };
 
 

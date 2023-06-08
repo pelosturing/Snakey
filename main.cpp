@@ -6,8 +6,9 @@
 
 int main()
 {
+    //设置随机数种子
+    srand(time(nullptr));
     initgraph(640, 480);	// 创建绘图窗口，大小为 640x480 像素
-
     GameScene scene;
     while (true){
         scene.run();
