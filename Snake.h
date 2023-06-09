@@ -21,7 +21,9 @@ public:
         nodes.emplace_back(10,0);
         nodes.emplace_back(0,0);
     }
-
+    inline int showDir() const{
+        return s_dir;
+    }
     void setDir(int dir);
     void draw() const override;
     void bodyMove();

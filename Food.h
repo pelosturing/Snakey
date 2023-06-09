@@ -8,14 +8,16 @@
 #include "Sprite.h"
 #include <ctime>
 
+
 class Food: public Sprite{
 public:
     Food():Sprite(10,10) {
         //随机生成
-        m_x = rand()%64*10;
-        m_y = rand()%48*10;
+        changeFood();
     }
     void draw() const override;
+    //改变食物坐标，生成新的食物
+    void changeFood();
 
 };
 

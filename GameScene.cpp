@@ -24,6 +24,37 @@ void GameScene::run() {
 void GameScene::onMsg(const ExMessage &msg) {
     //键盘消息
     if (msg.message == WM_KEYDOWN){
-        snake.setDir(msg.vkcode);   //vkcode = virtual key code虚拟键码
+        switch (msg.vkcode) {
+            case VK_UP:
+                if (snake.showDir()!=VK_DOWN)
+                    snake.setDir(VK_UP);
+                break;
+            case VK_DOWN:
+                if (snake.showDir()!=VK_UP)
+                    snake.setDir(VK_DOWN);
+                break;
+            case VK_LEFT:
+                if (snake.showDir()!=VK_RIGHT)
+                    snake.setDir(VK_LEFT);
+                break;
+            case VK_RIGHT:
+                if (snake.showDir()!=VK_LEFT)
+                    snake.setDir(VK_RIGHT);
+                break;
+        }
+    }
+}
+
+bool GameScene::snakeTouch() {
+    if (snake.touchFood(food)){
+        //加分
+        grade += 10;
+        //蛇生长
+        snake.grow();
+        //重新生成新的食物
+        food.changeFood();
+    }
+    if (snake.biteSelf()){
+        return true;
     }
 }
