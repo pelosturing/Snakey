@@ -3,13 +3,22 @@
 //
 
 #include "GameScene.h"
+#include <iostream>
 
 void GameScene::run() {
     //双缓冲绘图
     BeginBatchDraw();
     cleardevice();
+    //边框
+    rectangle(20,20,420,420);
     snake.draw();
     food.draw();
+    //文字
+    settextcolor(WHITE);
+    settextstyle(15,10,_T("宋体"));
+    char text[20];
+    _stprintf_s(text, _T("score:%d"), grade);
+    outtextxy(20,440,text);
     EndBatchDraw();
 
     //移动蛇，改动蛇坐标
@@ -54,7 +63,7 @@ bool GameScene::snakeTouch() {
         //重新生成新的食物
         food.changeFood();
     }
-    if (snake.biteSelf()){
+    if (snake.biteSelforTouchWall()){
         return true;
     }
 }

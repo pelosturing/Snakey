@@ -24,6 +24,14 @@ public:
         return m_y;
     }
 
+    void setX(int x){
+        m_x = x;
+    }
+
+    void setY(int y){
+        m_y = y;
+    }
+
     // 绘制
     virtual void draw() const;
     // 移动

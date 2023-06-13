@@ -13,16 +13,16 @@ void Snake::bodyMove() {
     //蛇头
     switch (s_dir) {
         case VK_UP:
-            nodes[0].moveBy(0,-10);
+            nodes[0].moveBy(0,-20);
             break;
         case VK_DOWN:
-            nodes[0].moveBy(0,10);
+            nodes[0].moveBy(0,20);
             break;
         case VK_LEFT:
-            nodes[0].moveBy(-10,0);
+            nodes[0].moveBy(-20,0);
             break;
         case VK_RIGHT:
-            nodes[0].moveBy(10,0);
+            nodes[0].moveBy(20,0);
             break;
         default:
             break;
@@ -44,12 +44,15 @@ bool Snake::touchFood(const Food &food) const {
     return nodes[0].isCollision(food);
 }
 
-bool Snake::biteSelf() const {
+bool Snake::biteSelforTouchWall() const {
     for (int i = 1; i < nodes.size(); ++ i) {
         if (nodes[0].isCollision(nodes[i])){
             return true;
         }
     }
+    if (nodes[0].locX()<20 || nodes[0].locX()>=420 ||
+        nodes[0].locY()<20 || nodes[0].locY()>=420)
+        return true;
     return false;
 }
 
@@ -58,3 +61,4 @@ void Snake::grow() {
     int new_y = nodes[nodes.size()-1].locY();
     nodes.emplace_back(new_x,new_y);
 }
+

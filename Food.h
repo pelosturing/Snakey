@@ -11,7 +11,7 @@
 
 class Food: public Sprite{
 public:
-    Food():Sprite(10,10) {
+    Food():Sprite(20,20) {
         //随机生成
         changeFood();
     }

@@ -9,7 +9,7 @@ void Sprite::draw() const {
     //设置填充颜色
     setfillcolor(m_color);
     //绘制矩形
-    fillrectangle(m_x,m_y,m_x+10,m_y+10);
+    fillrectangle(m_x,m_y,m_x+20,m_y+20);
 }
 
 void Sprite::moveBy(int dx, int dy) {
